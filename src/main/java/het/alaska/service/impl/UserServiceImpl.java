@@ -46,17 +46,17 @@ public class UserServiceImpl implements UserService {
 	public void delete(String userName) {
 		userDao.deleteUser(userName);
 	}
-
-	@Override
-	public List<User> findUsersByAdminId(String adminId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<User> findUsersByBizIdRoleType(int bizId, String roleType) {
-		return userDao.findUsersByBizIdRoleType(bizId, roleType);
-	}
+//
+//	@Override
+//	public List<User> findUsersByAdminId(String adminId) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
+//	@Override
+//	public List<User> findUsersByBizIdRoleType(int bizId, String roleType) {
+//		return userDao.findUsersByBizIdRoleType(bizId, roleType);
+//	}
 	
 	@Transactional(propagation=Propagation.REQUIRED, readOnly=false)
 	@Override

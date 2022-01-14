@@ -119,7 +119,7 @@ public class CoreController {
 			
 			if (user != null) {
 				jsonUser.put("userName", userName);
-				jsonUser.put("roleType", user.getRole());
+				jsonUser.put("role", user.getRole());
 				json.put("user", jsonUser);
 			}
 			

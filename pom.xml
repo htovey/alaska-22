@@ -10,7 +10,7 @@
 	<artifactId>alaska</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<name>core-21C</name>
+	<name>alaska-22</name>
 	<description>Core API Using Spring Boot</description>
 
 	<properties>

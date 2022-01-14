@@ -27,16 +27,16 @@ public class PersonDaoImpl implements PersonDao {
 		manager.close();
 		return person;
 	}
-	
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public List<Person> findPersonsByAdminId(String adminId) {
-		Session session = getSession();
-		Query query = session.getNamedQuery("Person.findPersonsByAdminId");
-		query.setParameter("admin_id", adminId);
-		List<Person> personList = query.list();
-		manager.close();
-		return personList;
-}
+//	
+//	@SuppressWarnings({ "rawtypes", "unchecked" })
+//	public List<Person> findPersonsByAdminId(String adminId) {
+//		Session session = getSession();
+//		Query query = session.getNamedQuery("Person.findPersonsByAdminId");
+//		query.setParameter("admin_id", adminId);
+//		List<Person> personList = query.list();
+//		manager.close();
+//		return personList;
+//	}
 
 	public void updatePerson(Person person) {
 		getSession().update(person);

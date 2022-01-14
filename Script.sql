@@ -54,8 +54,6 @@ CREATE TABLE user (
 	create_dt DATETIME,
 	save_dt DATETIME,
 	id INT NOT NULL,
-	admin_id INT,
-	biz_id INT NOT NULL,
 	group_id INT,
 	password VARCHAR(200) NOT NULL,
 	user_name VARCHAR(45) NOT NULL,

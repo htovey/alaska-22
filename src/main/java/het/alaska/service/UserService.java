@@ -16,9 +16,9 @@ public interface UserService {
 	
 	public void delete(String userName);
 	
-	public List<User>findUsersByAdminId(String adminId);
+	//public List<User>findUsersByAdminId(String adminId);
 
-	List<User> findUsersByBizIdRoleType(int bizId, String roleType);
+	//List<User> findUsersByBizIdRoleType(int bizId, String roleType);
 
 	void resetPassword(User user);
 }
