@@ -68,10 +68,10 @@ public class PersonController {
 		
 		List<User> userList = new ArrayList<User>();
 		
-		for(String role:  roleTypes) {
-			userList.addAll(userService.findUsersByBizIdRoleType(bizId, role));
-		}
-		
+//		for(String role:  roleTypes) {
+//			userList.addAll(userService.findUsersByBizIdRoleType(bizId, role));
+//		}
+//		
 		List<Person> personListFromDb = userList.stream()
 				.map(user -> personService.findByUserName(user.getUserName()))
 				.collect(Collectors.toList());			

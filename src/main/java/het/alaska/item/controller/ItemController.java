@@ -73,9 +73,30 @@ public class ItemController {
 		}
 		return new ResponseEntity<String>(msg, status);	
 	}
-	
+
 	@RequestMapping(value = "/itemList", method = RequestMethod.GET, produces="application/json")
-	public @ResponseBody List<Map<String, String>>itemList(@RequestBody String orderNumber, HttpServletRequest request) {
+	public @ResponseBody List<Map<String, String>>itemList(HttpServletRequest request) {
+		//String userId = getUserName(request);
+		//log.info("getting notes for "+userId);
+		List<Item> itemListFromDb = itemService.findAll();
+		
+		List<Map<String,String>> itemList = new ArrayList<Map<String,String>>();
+		
+		for (Item item : itemListFromDb) {
+			Map<String, String> itemMap = new HashMap<String, String>();
+			itemMap.put("id", String.valueOf(item.getId()));
+			itemMap.put("name", item.getName());
+			itemMap.put("category", item.getCategory());
+			itemMap.put("description", item.getDescription());
+			itemMap.put("saveDate", item.getSaveDt().toString());
+			itemList.add(itemMap);
+		}
+		
+		return itemList;
+	}
+	
+	@RequestMapping(value = "/orderItemList", method = RequestMethod.GET, produces="application/json")
+	public @ResponseBody List<Map<String, String>>orderItemList(@RequestBody String orderNumber, HttpServletRequest request) {
 		//String userId = getUserName(request);
 		//log.info("getting notes for "+userId);
 		List<Item> itemListFromDb = itemService.findItemsByOrderNumber(orderNumber);
@@ -114,5 +135,4 @@ public class ItemController {
 		
 		return new ResponseEntity<String>(msg, status);	
 	}
-
 }

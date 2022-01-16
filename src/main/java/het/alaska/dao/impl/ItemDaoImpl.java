@@ -6,6 +6,8 @@ package het.alaska.dao.impl;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
 
 import het.alaska.dao.ItemDao;
 import het.alaska.model.Item;
@@ -14,6 +16,7 @@ import org.hibernate.query.Query;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 
 /**
  * @author heather
@@ -61,8 +64,19 @@ public class ItemDaoImpl implements ItemDao {
 
 	@Override
 	public List<Item> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		//Create CriteriaBuilder
+		CriteriaBuilder builder = getSession().getCriteriaBuilder();
+
+		//Create CriteriaQuery
+		CriteriaQuery<Item> criteria = builder.createQuery(Item.class);
+		
+		 // Specify criteria root
+        criteria.from(Item.class);
+
+        // Execute query
+        List<Item> itemList = getSession().createQuery(criteria).getResultList();
+        
+        return itemList;
 	}
 
 	@Override

@@ -129,6 +129,8 @@ public class SecurityAdapter extends WebSecurityConfigurerAdapter{
 		.and()
 		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 		.and()
+		.authorizeRequests().antMatchers("/register").anonymous()
+		.and()
 		.authorizeRequests().antMatchers("/login", "/reset**", "/requestReset").permitAll()
 		.and()
 		.authorizeRequests().anyRequest().authenticated();

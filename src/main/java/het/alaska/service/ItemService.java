@@ -15,5 +15,7 @@ public interface ItemService {
 	
 	public void delete(Integer itemId);
 	
+	public List<Item>findAll();
+	
 	public List<Item>findItemsByOrderNumber(String orderNumber);
 }

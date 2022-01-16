@@ -105,13 +105,19 @@ public class CoreController {
 		MultiValueMap<String, String> headers = new HttpHeaders();
 		HttpStatus status = HttpStatus.OK;
 		JSONObject json = new JSONObject();
+		Person person = null;
 		
 		if (userName == null) {
 			respStatus =  "error - user not found.";
 			status = HttpStatus.FORBIDDEN;
 		} else {
 			User user = userService.findByUserName(userName);
-			Person person = personService.findByUserName(user.getUserName());
+			try {
+				person = personService.findByUserName(user.getUserName());
+			} catch(Exception ex) {
+				//noop
+			}
+			
  			headers.add(HttpHeaders.AUTHORIZATION,
                     jwtTokenUtil.generateAccessToken(user));
 			JSONObject jsonUser = new JSONObject();
@@ -135,6 +141,21 @@ public class CoreController {
 		json.put("responseStatus", respStatus);
 		
 		return new ResponseEntity<String>(json.toString(), headers, status);		
+	}
+	
+	@RequestMapping(value = "/register", method = RequestMethod.POST, produces="application/json")
+    public ResponseEntity <String> register(@RequestBody User user) throws JSONException {
+		log.info("Register request for user "+user.getUserName());
+		String msg = "success";
+		HttpStatus status = HttpStatus.CREATED;
+		if (userService.findByUserName(user.getUserName()) != null) {
+			msg = "Error - user name already exists";
+			status = HttpStatus.CONFLICT;
+		} else {
+			userService.create(user);
+		}
+		
+		return new ResponseEntity<String>(msg, status);			
 	}
 	
 	

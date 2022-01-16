@@ -59,5 +59,11 @@ public class ItemServiceImpl implements ItemService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public List<Item>findAll() {
+	 List<Item> itemList = itemDao.findAll();
+	 return itemList;
+	}
 
 }
