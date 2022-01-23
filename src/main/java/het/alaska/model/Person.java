@@ -10,6 +10,7 @@ import java.util.Date;
  * 
  */
 @Entity
+@Table(name="person")
 @NamedQuery(name="Person.findAll", query="SELECT p FROM Person p")
 @NamedQuery(name="Person.findPersonByUserName", query="SELECT p FROM Person p where p.userName = :user_name")
 public class Person implements Serializable {

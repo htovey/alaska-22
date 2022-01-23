@@ -38,7 +38,7 @@ public class ItemServiceImpl implements ItemService {
 	}
 	
 	@Transactional(propagation=Propagation.REQUIRED, readOnly=false)
-	public Item findByItemId(Integer itemId) {
+	public Item findByItemId(String itemId) {
 		return itemDao.findItemById(itemId);
 	}
 	
@@ -49,7 +49,7 @@ public class ItemServiceImpl implements ItemService {
 	}
 	
 	@Transactional(propagation=Propagation.REQUIRED, readOnly=false)
-	public void delete(Integer itemId) {
+	public void delete(String itemId) {
 		itemDao.deleteItem(itemId);
 	}
 

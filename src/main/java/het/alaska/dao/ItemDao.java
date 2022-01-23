@@ -9,13 +9,13 @@ public interface ItemDao {
 
 	void persistItem(Item item);
 	  
-	Item findItemById(Integer id);
+	Item findItemById(String id);
 	
 	int findItemByName(String name);
 	  
 	void updateItem(Item item);
 	  
-	void deleteItem(Integer id);
+	void deleteItem(String id);
 	
 	public List<Item> findAll();
 }

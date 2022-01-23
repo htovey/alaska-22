@@ -29,11 +29,11 @@ public class ItemDaoImpl implements ItemDao {
 	@Autowired
 	private EntityManager manager;
 	
-	public void persistItem(Item note) {
-		getSession().persist(note);
+	public void persistItem(Item item) {
+		getSession().persist(item);
 	}
 
-	public Item findItemById(Integer itemId) {
+	public Item findItemById(String itemId) {
 		return (Item) getSession().get(Item.class, itemId);
 	}
 
@@ -41,7 +41,7 @@ public class ItemDaoImpl implements ItemDao {
 		//getSession().update("Item", note);
 		getSession().saveOrUpdate(item);
 	}
-	public void deleteItem(Integer itemId) {
+	public void deleteItem(String itemId) {
 		Item item = findItemById(itemId);
 		getSession().delete(item);
 

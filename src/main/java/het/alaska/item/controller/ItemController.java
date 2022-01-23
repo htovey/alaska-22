@@ -65,7 +65,7 @@ public class ItemController {
 		HttpStatus status = HttpStatus.OK;
 		try {
 			for (String itemId : itemArray) {
-				itemService.delete(Integer.valueOf(itemId));
+				itemService.delete(itemId);
 			}
 		} catch(Exception ex) {
 			status = HttpStatus.BAD_REQUEST;
@@ -117,7 +117,7 @@ public class ItemController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, consumes="application/json", produces="application/json")
-	ResponseEntity<String> getItem(@RequestParam int id) throws JSONException {
+	ResponseEntity<String> getItem(@RequestParam String id) throws JSONException {
 		String msg = "success";
 		HttpStatus status = HttpStatus.OK;
 		Item item = itemService.findByItemId(id);
