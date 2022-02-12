@@ -89,6 +89,7 @@ public class ItemController {
 			itemMap.put("category", item.getCategory());
 			itemMap.put("description", item.getDescription());
 			itemMap.put("saveDate", item.getSaveDt().toString());
+			itemMap.put("imageUrl", item.getImageUrl());
 			itemList.add(itemMap);
 		}
 		
@@ -109,6 +110,7 @@ public class ItemController {
 			itemMap.put("name", item.getName());
 			itemMap.put("category", item.getCategory());
 			itemMap.put("description", item.getDescription());
+			itemMap.put("img_url", item.getImageUrl());
 			itemMap.put("saveDate", item.getSaveDt().toString());
 			itemList.add(itemMap);
 		}
@@ -130,6 +132,7 @@ public class ItemController {
 			jsonItem.put("itemCategory", item.getCategory());
 			jsonItem.put("itemDescription", item.getDescription());
 			jsonItem.put("itemId", item.getId());
+			jsonItem.put("itemImageUrl", item.getImageUrl());
 			msg = jsonItem.toString();
 		}
 		

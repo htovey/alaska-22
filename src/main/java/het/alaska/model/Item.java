@@ -39,6 +39,9 @@ public class Item implements Serializable {
 	@Column(name="save_dt")
 	private Date saveDt;
 	
+	@Column(name="img_url")
+	private String imageUrl;
+	
 	
 	public Item() {
 	}
@@ -89,6 +92,14 @@ public class Item implements Serializable {
 
 	public void setOrderNo(int orderNo) {
 		this.orderNo = orderNo;
+	}
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
 	}
 
 	public Date getSaveDt() {
