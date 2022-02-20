@@ -24,7 +24,9 @@ public class RestAuthenticationFailure implements AuthenticationEntryPoint {
 			AuthenticationException authException) throws IOException, ServletException {
 			
 			log.debug("Authentication Failed, sending error response!!!");
-			response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized -bad credentials");
+			//response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized -bad credentials");
+			response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+			response.getWriter().write("Unauthorized -bad credentials");
 	}
 
 }
