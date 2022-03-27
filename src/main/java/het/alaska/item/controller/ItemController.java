@@ -32,7 +32,7 @@ public class ItemController {
 	@Autowired
 	ItemService itemService;
 	
-	public final Log log = LogFactory.getLog(ItemService.class);
+	public final Log log = LogFactory.getLog(ItemController.class);
 	
 	@RequestMapping(path = "/create", method = RequestMethod.POST, consumes="application/json", produces="application/json")
 	ResponseEntity <String> createItem(@RequestBody Item item, HttpServletRequest request) {
@@ -75,10 +75,17 @@ public class ItemController {
 	}
 
 	@RequestMapping(value = "/itemList", method = RequestMethod.GET, produces="application/json")
-	public @ResponseBody List<Map<String, String>>itemList(HttpServletRequest request) {
-		//String userId = getUserName(request);
+	public @ResponseBody List<Map<String, String>>itemList(@RequestParam String category, HttpServletRequest request) throws JSONException {
+		
 		//log.info("getting notes for "+userId);
-		List<Item> itemListFromDb = itemService.findAll();
+		List<Item> itemListFromDb = new ArrayList<Item>();
+		
+		if (category == "") {
+			itemListFromDb = itemService.findAll();
+		} else {
+			itemListFromDb = itemService.findItemsByCategory(category);
+		}
+		
 		
 		List<Map<String,String>> itemList = new ArrayList<Map<String,String>>();
 		

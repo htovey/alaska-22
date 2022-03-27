@@ -63,7 +63,7 @@ public class MyCorsFilter extends CorsFilter {
         
     	response.setHeader("Access-Control-Allow-Credentials", "true");
     	response.setHeader("Access-Control-Allow-Origin", origin);
-        response.setHeader("Access-Control-Allow-Methods", "POST,GET,OPTIONS");
+        response.setHeader("Access-Control-Allow-Methods", "POST,PUT,GET,OPTIONS");
         response.setHeader("Access-Control-Allow-Headers", "Origin, Accept, authorization, Authorization, Connection, Content-Type, Accept, X-Requested-With, remember-me, x-csrf-token");
         response.setHeader("Access-Control-Expose-Headers", "Origin, Accept, authorization, Authorization, TokenError");
         response.setHeader("Access-Control-Max-Age", "12000");

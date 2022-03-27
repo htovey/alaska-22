@@ -18,4 +18,6 @@ public interface ItemDao {
 	void deleteItem(String id);
 	
 	public List<Item> findAll();
+
+	List<Item> findItemsByCategory(String category);
 }

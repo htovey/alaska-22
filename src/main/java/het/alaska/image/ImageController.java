@@ -31,7 +31,7 @@ public class ImageController {
 	};
 	
 	@RequestMapping(value="/saveLinks", method = RequestMethod.PUT)
-	public String saveImageLinks(@RequestBody List<Image> imageUrlList) {
+	public @ResponseBody String saveImageLinks(@RequestBody List<Image> imageUrlList) {
 		String msg = "success";
 		try {
 			imageService.saveImageLinks(imageUrlList);

@@ -18,4 +18,6 @@ public interface ItemService {
 	public List<Item>findAll();
 	
 	public List<Item>findItemsByOrderNumber(String orderNumber);
+
+	List<Item> findItemsByCategory(String category);
 }

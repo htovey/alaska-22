@@ -89,7 +89,7 @@ public class SecurityAdapter extends WebSecurityConfigurerAdapter{
 	    CorsConfigurationSource corsConfigurationSource() {
 	        CorsConfiguration configuration = new CorsConfiguration();
 	        configuration.setAllowedOrigins(Arrays.asList(StringUtils.tokenizeToStringArray(allowedOrigins, ",")));
-	        configuration.setAllowedMethods(Arrays.asList("GET","POST", "OPTIONS"));
+	        configuration.setAllowedMethods(Arrays.asList("GET","POST", "PUT","OPTIONS"));
 	        configuration.setAllowedHeaders(Arrays.asList("Origin, Accept, authorization, Content-Type, Accept, X-Requested-With, remember-me, x-csrf-token"));
 	        configuration.addAllowedHeader("authorization");
 	        configuration.addAllowedHeader("content-type");

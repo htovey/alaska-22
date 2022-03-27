@@ -8,6 +8,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 import het.alaska.dao.ItemDao;
 import het.alaska.model.Item;
@@ -56,6 +57,27 @@ public class ItemDaoImpl implements ItemDao {
 		query.setParameter("USER_ID", userId);
 		List<Item> itemList = query.list();
 		return itemList;
+	}
+	
+	
+	@Override
+	public List<Item> findItemsByCategory(String category) {
+		
+		CriteriaBuilder builder = getSession().getCriteriaBuilder();
+
+		//Create CriteriaQuery
+		CriteriaQuery<Item> criteria = builder.createQuery(Item.class);
+		
+		 // Specify criteria root
+        Root<Item> root = criteria.from(Item.class);
+        
+        criteria.select(root).where(builder.equal(root.get("category"), category));
+
+
+        // Execute query
+        List<Item> itemList = getSession().createQuery(criteria).getResultList();
+        
+        return itemList;
 	}
 	
 	private Session getSession() {
