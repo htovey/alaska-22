@@ -31,10 +31,14 @@ public class ImageController {
 	};
 	
 	@RequestMapping(value="/saveLinks", method = RequestMethod.PUT)
+<<<<<<< Updated upstream
 	public @ResponseBody String saveImageLinks(@RequestBody List<Image> imageUrlList) {
+=======
+	public String saveImageLinks(@RequestBody List<Image> imageList) {
+>>>>>>> Stashed changes
 		String msg = "success";
 		try {
-			imageService.saveImageLinks(imageUrlList);
+			imageService.saveImageLinks(imageList);
 		} catch (Exception ex) {
 			log.error(ex);
 		}
